@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#6366f1">
+<title>台北3日游 · 行程</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #f5f7fa;
+  color: #1a1a1a;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 0 48px;
+}
+.header {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  padding: 24px 20px 20px;
+}
+.header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+.header .meta {
+  font-size: 14px;
+  opacity: 0.95;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+.header .notes {
+  margin-top: 10px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.15);
+  padding: 8px 10px;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px 16px;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+}
+.toolbar .label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+.toolbar button {
+  font-size: 13px;
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  border-radius: 6px;
+  color: #374151;
+  cursor: pointer;
+}
+.toolbar button:active { background: #f3f4f6; }
+.days { padding: 12px 12px 0; }
+.day {
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.day-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.day-summary::-webkit-details-marker { display: none; }
+.day-summary::after {
+  content: '▸';
+  margin-left: auto;
+  color: #9ca3af;
+  transition: transform 0.2s;
+  font-size: 14px;
+}
+.day[open] .day-summary::after { transform: rotate(90deg); }
+.day-num { color: #6366f1; }
+.day-date { color: #6b7280; font-weight: 400; font-size: 14px; }
+.day-count { color: #9ca3af; font-weight: 400; font-size: 12px; }
+.items { list-style: none; padding: 0 14px 14px; }
+.item {
+  padding: 12px;
+  border-radius: 10px;
+  border-left: 4px solid #d1d5db;
+  margin-bottom: 8px;
+  background: #f9fafb;
+}
+.item.type-attraction { border-left-color: #10b981; }
+.item.type-food { border-left-color: #f59e0b; }
+.item.type-transport { border-left-color: #3b82f6; }
+.item.type-hotel { border-left-color: #8b5cf6; }
+.item.type-free { border-left-color: #9ca3af; }
+.item-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.item-time {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  font-variant-numeric: tabular-nums;
+}
+.item-icon { font-size: 16px; }
+.item-type {
+  font-size: 11px;
+  color: #6b7280;
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+.item-title {
+  font-size: 15px;
+  display: block;
+  margin: 2px 0 2px;
+  word-break: break-word;
+}
+.item-loc {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 2px;
+}
+.item-notes {
+  font-size: 13px;
+  color: #4b5563;
+  margin-top: 4px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.empty {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+  padding: 12px;
+}
+.footer {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 11px;
+  padding: 16px;
+}
+.no-days {
+  text-align: center;
+  color: #9ca3af;
+  padding: 40px 20px;
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>台北3日游</h1>
+    <div class="meta">
+      <span>📍 台北</span>
+      <span>📅 2026-09-10 ~ 2026-09-13</span>
+      <span>👤 10人</span>
+    </div>
+    
+  </div>
+
+  <div class="toolbar">
+    <span class="label">共 4 天 · 2 个素材</span>
+    <button onclick="toggleAll()">展开/折叠全部</button>
+  </div>
+
+  <div class="days">
+      <details class="day" open>
+        <summary class="day-summary">
+          <span class="day-num">Day 1</span>
+          <span class="day-date">2026-09-10</span>
+          <span class="day-count">5 项</span>
+        </summary>
+        <ul class="items">
+        <li class="item type-attraction">
+          <div class="item-head">
+            <span class="item-time">09:00</span>
+            <span class="item-icon">🎟️</span>
+            <span class="item-type">景点</span>
+          </div>
+          <strong class="item-title">西门町</strong>
+          <div class="item-loc">📍 台北市万华区</div>
+          <p class="item-notes">体验当地文化，购物打卡</p>
+        </li>
+        <li class="item type-food">
+          <div class="item-head">
+            <span class="item-time">12:00</span>
+            <span class="item-icon">🍽️</span>
+            <span class="item-type">餐饮</span>
+          </div>
+          <strong class="item-title">宁夏夜市</strong>
+          <div class="item-loc">📍 台北市大同区</div>
+          <p class="item-notes">品尝当地美食，建议预留2小时</p>
+        </li>
+        <li class="item type-attraction">
+          <div class="item-head">
+            <span class="item-time">14:30</span>
+            <span class="item-icon">🎟️</span>
+            <span class="item-type">景点</span>
+          </div>
+          <strong class="item-title">台北101</strong>
+          <div class="item-loc">📍 台北市信义区</div>
+          <p class="item-notes">地标建筑打卡，可提前购票节省排队时间</p>
+        </li>
+        <li class="item type-free">
+          <div class="item-head">
+            <span class="item-time">17:00</span>
+            <span class="item-icon">🎈</span>
+            <span class="item-type">购物</span>
+          </div>
+          <strong class="item-title">三统汉果子信义区分店</strong>
+          <div class="item-loc">📍 台北市信义区</div>
+          <p class="item-notes">购买伴手礼，推荐流心酥和凤梨酥</p>
+        </li>
+        <li class="item type-hotel">
+          <div class="item-head">
+            <span class="item-time">19:00</span>
+            <span class="item-icon">🏨</span>
+            <span class="item-type">住宿</span>
+          </div>
+          <strong class="item-title">士林万丽酒店</strong>
+          <div class="item-loc">📍 台北市士林区</div>
+          <p class="item-notes">入住酒店，休息调整</p>
+        </li></ul>
+      </details>
+      <details class="day" >
+        <summary class="day-summary">
+          <span class="day-num">Day 2</span>
+          <span class="day-date">2026-09-11</span>
+          <span class="day-count">4 项</span>
+        </summary>
+        <ul class="items">
+        <li class="item type-attraction">
+          <div class="item-head">
+            <span class="item-time">09:00</span>
+            <span class="item-icon">🎟️</span>
+            <span class="item-type">景点</span>
+          </div>
+          <strong class="item-title">台北故宫博物院</strong>
+          <div class="item-loc">📍 台北市士林区</div>
+          <p class="item-notes">必去景点，建议预留3-4小时参观</p>
+        </li>
+        <li class="item type-attraction">
+          <div class="item-head">
+            <span class="item-time">13:00</span>
+            <span class="item-icon">🎟️</span>
+            <span class="item-type">景点</span>
+          </div>
+          <strong class="item-title">袖珍博物馆</strong>
+          <div class="item-loc">📍 台北市中山区</div>
+          <p class="item-notes">小而精致，适合模型和玩偶爱好者</p>
+        </li>
+        <li class="item type-attraction">
+          <div class="item-head">
+            <span class="item-time">15:00</span>
+            <span class="item-icon">🎟️</span>
+            <span class="item-type">景点</span>
+          </div>
+          <strong class="item-title">中山地下街</strong>
+          <div class="item-loc">📍 台北市中山区</div>
+          <p class="item-notes">购物探索的好去处</p>
+        </li>
+        <li class="item type-food">
+          <div class="item-head">
+            <span class="item-time">18:00</span>
+            <span class="item-icon">🍽️</span>
+            <span class="item-type">餐饮</span>
+          </div>
+          <strong class="item-title">赤峰街</strong>
+          <div class="item-loc">📍 台北市中山区</div>
+          <p class="item-notes">扫街探店，品尝当地特色美食</p>
+        </li></ul>
+      </details>
+      <details class="day" >
+        <summary class="day-summary">
+          <span class="day-num">Day 3</span>
+          <span class="day-date">2026-09-12</span>
+          <span class="day-count">5 项</span>
+        </summary>
+        <ul class="items">
+        <li class="item type-attraction">
+          <div class="item-head">
+            <span class="item-time">09:00</span>
+            <span class="item-icon">🎟️</span>
+            <span class="item-type">景点</span>
+          </div>
+          <strong class="item-title">三创生活园区</strong>
+          <div class="item-loc">📍 台北市松山区</div>
+          <p class="item-notes">二次元天堂，适合购物和展览</p>
+        </li>
+        <li class="item type-attraction">
+          <div class="item-head">
+            <span class="item-time">12:00</span>
+            <span class="item-icon">🎟️</span>
+            <span class="item-type">景点</span>
+          </div>
+          <strong class="item-title">华山文创园</strong>
+          <div class="item-loc">📍 台北市中正区</div>
+          <p class="item-notes">展览多且有趣，知名IP和文创聚集地</p>
+        </li>
+        <li class="item type-transport">
+          <div class="item-head">
+            <span class="item-time">15:00</span>
+            <span class="item-icon">🚆</span>
+            <span class="item-type">交通</span>
+          </div>
+          <strong class="item-title">台铁e订通购票</strong>
+          <div class="item-loc">📍 台北车站</div>
+          <p class="item-notes">购买台铁票，推荐自强号腾云座舱</p>
+        </li>
+        <li class="item type-transport">
+          <div class="item-head">
+            <span class="item-time">16:00</span>
+            <span class="item-icon">🚆</span>
+            <span class="item-type">交通</span>
+          </div>
+          <strong class="item-title">台铁前往花莲</strong>
+          <div class="item-loc">📍 台北车站</div>
+          <p class="item-notes">车程约2小时，享受免费吃喝</p>
+        </li>
+        <li class="item type-hotel">
+          <div class="item-head">
+            <span class="item-time">19:00</span>
+            <span class="item-icon">🏨</span>
+            <span class="item-type">住宿</span>
+          </div>
+          <strong class="item-title">美仑大饭店</strong>
+          <div class="item-loc">📍 花莲县花莲市</div>
+          <p class="item-notes">入住酒店，休息调整</p>
+        </li></ul>
+      </details>
+      <details class="day" >
+        <summary class="day-summary">
+          <span class="day-num">Day 4</span>
+          <span class="day-date">2026-09-13</span>
+          <span class="day-count">4 项</span>
+        </summary>
+        <ul class="items">
+        <li class="item type-attraction">
+          <div class="item-head">
+            <span class="item-time">09:00</span>
+            <span class="item-icon">🎟️</span>
+            <span class="item-type">景点</span>
+          </div>
+          <strong class="item-title">淡江中学</strong>
+          <div class="item-loc">📍 新北市淡水区</div>
+          <p class="item-notes">《不能说的秘密》取景地</p>
+        </li>
+        <li class="item type-attraction">
+          <div class="item-head">
+            <span class="item-time">11:00</span>
+            <span class="item-icon">🎟️</span>
+            <span class="item-type">景点</span>
+          </div>
+          <strong class="item-title">真理大学</strong>
+          <div class="item-loc">📍 新北市淡水区</div>
+          <p class="item-notes">参观校园，感受学术氛围</p>
+        </li>
+        <li class="item type-attraction">
+          <div class="item-head">
+            <span class="item-time">14:00</span>
+            <span class="item-icon">🎟️</span>
+            <span class="item-type">景点</span>
+          </div>
+          <strong class="item-title">渔人码头</strong>
+          <div class="item-loc">📍 新北市淡水区</div>
+          <p class="item-notes">欣赏日落，拍照打卡</p>
+        </li>
+        <li class="item type-transport">
+          <div class="item-head">
+            <span class="item-time">17:00</span>
+            <span class="item-icon">🚆</span>
+            <span class="item-type">交通</span>
+          </div>
+          <strong class="item-title">返回台北</strong>
+          <div class="item-loc">📍 新北市淡水区</div>
+          <p class="item-notes">乘坐台铁或打车返回台北，预留充足时间</p>
+        </li></ul>
+      </details></div>
+
+  <div class="footer">由「说走就走」生成 · 2026/9/12 17:40:17</div>
+</div>
+
+<script>
+function toggleAll(){
+  var ds = document.querySelectorAll('details.day');
+  var anyOpen = Array.prototype.some.call(ds, function(d){ return d.hasAttribute('open') });
+  ds.forEach(function(d){
+    if(anyOpen) d.removeAttribute('open');
+    else d.setAttribute('open','');
+  });
+}
+</script>
+</body>
+</html>
