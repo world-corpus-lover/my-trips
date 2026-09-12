@@ -775,13 +775,60 @@ input, textarea, select { pointer-events: none !important; }
           <span>📍 台北</span>
           <span>📅 2026-09-10 ~ 2026-09-13</span>
           <span>👤 10人</span>
-          <span>📦 素材 0</span>
+          <span>📦 素材 1</span>
         </div>
         
         <span class="chevron">▾</span>
       </div>
       <div class="materials">
-        <p className="empty">还没有素材</p>
+        <ul class="mat-list">
+          <li class="mat-card">
+            <div class="mat-card-head">
+              <span class="mat-icon">🔗</span>
+              <div class="mat-card-body">
+                <a href="https://www.xiaohongshu.com/explore/6a228bcf000000002202a777?xsec_token=CBGYpKqDN4HkulAeZRtet7t6Snp0Qkw1_O4b96s41uJdk=&amp;xsec_source=app_share" target="_blank" rel="noreferrer" class="mat-title">🇭🇰港硕之台湾7天6晚花费记录 - 小红书</a>
+                <div class="mat-status">✓ 已提取正文</div>
+              </div>
+            </div>
+            <details class="mat-content"><summary>查看正文</summary><p>简单梳理一下台湾7天自由行的所有开销
+	
+1️⃣机票：香港-台北✈️650 CNY
+台中-香港✈️693 CNY
+	
+2️⃣住宿：台北5晚人均998 CNY
+台中1晚人均223 CNY
+💰机酒合计：2564 CNY
+	
+3️⃣交通：台铁+高铁+捷运+Uber
+捷运（12次）：472 TWD
+打车（8次） ：1774 TWD（三人分摊
+花莲包车4小时 2000 TWD （三人分摊
+台北-花莲 （台铁）583 TWD
+花莲-台北 （台铁） 583 TWD
+台北-台中 （高铁）85.7 CNY（klook买一送一
+💰交通合计：2896 TWD + 85.7 CNY ≈ 708.7 CNY
+	
+4️⃣餐饮：
+7天早餐：469 TWD
+正餐+小吃：3689.5 TWD
+奶茶咖啡饮料零食：787.5 TWD
+💰餐饮合计：4946 TWD ≈ 1064 CNY
+	
+台北-大稻埕卤肉饭
+台北-烧肉政宗
+台北-寿司郎
+台北-双月食品社
+台北-喫飯食堂
+淡水-麻吉奶奶鲜奶麻薯
+淡水-朝日夫妇
+花莲-佳兴冰果店
+台中-春水堂
+台中-宫原眼科冰激凌
+	
+5️⃣景点门票：
+台北故宫 350 TWD
+讲解器...</p></details>
+          </li></ul>
         <div class="timeline">
         <div class="timeline-head">
           <h3 class="timeline-title">行程时间线 <span class="timeline-hint">(展示版,只读)</span></h3>
@@ -794,15 +841,27 @@ input, textarea, select { pointer-events: none !important; }
             </div>
             <ul class="day-items">
               
-                <li class="day-item type-attraction">
+                <li class="day-item type-transport">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
                     <span class="item-time">09:00</span>
-                    <span class="item-type">景点</span>
+                    <span class="item-type">交通</span>
                     <div class="item-body">
-                      <strong>西门町</strong>
-                      <span class="item-loc">📍 台北市万华区</span>
-                      <p class="item-notes">体验当地文化，购物打卡</p>
+                      <strong>抵达台北</strong>
+                      <span class="item-loc">📍 台北桃园国际机场</span>
+                      <p class="item-notes">建议办理入境手续后搭乘捷运前往市区</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-hotel">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">10:30</span>
+                    <span class="item-type">住宿</span>
+                    <div class="item-body">
+                      <strong>酒店入住</strong>
+                      <span class="item-loc">📍 台北市区</span>
+                      <p class="item-notes">建议选择交通便利的酒店</p>
                     </div>
                   </div>
                 </li>
@@ -812,45 +871,33 @@ input, textarea, select { pointer-events: none !important; }
                     <span class="item-time">12:00</span>
                     <span class="item-type">餐饮</span>
                     <div class="item-body">
-                      <strong>宁夏夜市</strong>
+                      <strong>大稻埕卤肉饭</strong>
                       <span class="item-loc">📍 台北市大同区</span>
-                      <p class="item-notes">品尝当地美食，建议预留2小时</p>
+                      <p class="item-notes">当地知名卤肉饭店</p>
                     </div>
                   </div>
                 </li>
                 <li class="day-item type-attraction">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">14:30</span>
+                    <span class="item-time">14:00</span>
                     <span class="item-type">景点</span>
                     <div class="item-body">
-                      <strong>台北101</strong>
-                      <span class="item-loc">📍 台北市信义区</span>
-                      <p class="item-notes">地标建筑打卡，可提前购票节省排队时间</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="day-item type-free">
-                  <div class="item-view">
-                    <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">17:00</span>
-                    <span class="item-type">购物</span>
-                    <div class="item-body">
-                      <strong>三统汉果子信义区分店</strong>
-                      <span class="item-loc">📍 台北市信义区</span>
-                      <p class="item-notes">购买伴手礼，推荐流心酥和凤梨酥</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="day-item type-hotel">
-                  <div class="item-view">
-                    <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">19:00</span>
-                    <span class="item-type">住宿</span>
-                    <div class="item-body">
-                      <strong>士林万丽酒店</strong>
+                      <strong>台北故宫博物院</strong>
                       <span class="item-loc">📍 台北市士林区</span>
-                      <p class="item-notes">入住酒店，休息调整</p>
+                      <p class="item-notes">建议提前购票，可租用讲解器（200 TWD）</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-food">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">18:00</span>
+                    <span class="item-type">餐饮</span>
+                    <div class="item-body">
+                      <strong>烧肉政宗</strong>
+                      <span class="item-loc">📍 台北市大安区</span>
+                      <p class="item-notes">日式烧肉餐厅</p>
                     </div>
                   </div>
                 </li>
@@ -864,51 +911,63 @@ input, textarea, select { pointer-events: none !important; }
             </div>
             <ul class="day-items">
               
-                <li class="day-item type-attraction">
+                <li class="day-item type-transport">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">09:00</span>
-                    <span class="item-type">景点</span>
+                    <span class="item-time">08:00</span>
+                    <span class="item-type">交通</span>
                     <div class="item-body">
-                      <strong>台北故宫博物院</strong>
-                      <span class="item-loc">📍 台北市士林区</span>
-                      <p class="item-notes">必去景点，建议预留3-4小时参观</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="day-item type-attraction">
-                  <div class="item-view">
-                    <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">13:00</span>
-                    <span class="item-type">景点</span>
-                    <div class="item-body">
-                      <strong>袖珍博物馆</strong>
-                      <span class="item-loc">📍 台北市中山区</span>
-                      <p class="item-notes">小而精致，适合模型和玩偶爱好者</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="day-item type-attraction">
-                  <div class="item-view">
-                    <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">15:00</span>
-                    <span class="item-type">景点</span>
-                    <div class="item-body">
-                      <strong>中山地下街</strong>
-                      <span class="item-loc">📍 台北市中山区</span>
-                      <p class="item-notes">购物探索的好去处</p>
+                      <strong>搭乘捷运前往淡水</strong>
+                      <span class="item-loc">📍 淡水捷运站</span>
+                      <p class="item-notes">捷运约40分钟车程</p>
                     </div>
                   </div>
                 </li>
                 <li class="day-item type-food">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">18:00</span>
+                    <span class="item-time">09:00</span>
                     <span class="item-type">餐饮</span>
                     <div class="item-body">
-                      <strong>赤峰街</strong>
-                      <span class="item-loc">📍 台北市中山区</span>
-                      <p class="item-notes">扫街探店，品尝当地特色美食</p>
+                      <strong>麻吉奶奶鲜奶麻薯</strong>
+                      <span class="item-loc">📍 淡水老街</span>
+                      <p class="item-notes">当地特色小吃</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">10:00</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>淡水小白宫</strong>
+                      <span class="item-loc">📍 淡水区真理街</span>
+                      <p class="item-notes">白色外观的建筑，适合拍照</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">11:30</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>野柳地质公园</strong>
+                      <span class="item-loc">📍 台北市北投区</span>
+                      <p class="item-notes">可参加一日游（178 CNY）</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-food">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">18:30</span>
+                    <span class="item-type">餐饮</span>
+                    <div class="item-body">
+                      <strong>喫飯食堂</strong>
+                      <span class="item-loc">📍 台北市中山區</span>
+                      <p class="item-notes">台式料理餐厅</p>
                     </div>
                   </div>
                 </li>
@@ -922,63 +981,63 @@ input, textarea, select { pointer-events: none !important; }
             </div>
             <ul class="day-items">
               
-                <li class="day-item type-attraction">
+                <li class="day-item type-transport">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
                     <span class="item-time">09:00</span>
-                    <span class="item-type">景点</span>
+                    <span class="item-type">交通</span>
                     <div class="item-body">
-                      <strong>三创生活园区</strong>
-                      <span class="item-loc">📍 台北市松山区</span>
-                      <p class="item-notes">二次元天堂，适合购物和展览</p>
+                      <strong>搭乘捷运前往西门町</strong>
+                      <span class="item-loc">📍 西门捷运站</span>
+                      <p class="item-notes">台北热门商圈</p>
                     </div>
                   </div>
                 </li>
                 <li class="day-item type-attraction">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">12:00</span>
+                    <span class="item-time">10:00</span>
                     <span class="item-type">景点</span>
                     <div class="item-body">
-                      <strong>华山文创园</strong>
-                      <span class="item-loc">📍 台北市中正区</span>
-                      <p class="item-notes">展览多且有趣，知名IP和文创聚集地</p>
+                      <strong>女巫店</strong>
+                      <span class="item-loc">📍 台北市万华区</span>
+                      <p class="item-notes">独立书店，门票510 TWD</p>
                     </div>
                   </div>
                 </li>
-                <li class="day-item type-transport">
+                <li class="day-item type-food">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">15:00</span>
-                    <span class="item-type">交通</span>
+                    <span class="item-time">12:00</span>
+                    <span class="item-type">餐饮</span>
                     <div class="item-body">
-                      <strong>台铁e订通购票</strong>
-                      <span class="item-loc">📍 台北车站</span>
-                      <p class="item-notes">购买台铁票，推荐自强号腾云座舱</p>
+                      <strong>双月食品社</strong>
+                      <span class="item-loc">📍 台北市万华区</span>
+                      <p class="item-notes">传统糕点店</p>
                     </div>
                   </div>
                 </li>
-                <li class="day-item type-transport">
+                <li class="day-item type-food">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">14:00</span>
+                    <span class="item-type">餐饮</span>
+                    <div class="item-body">
+                      <strong>寿司郎</strong>
+                      <span class="item-loc">📍 台北市中山区</span>
+                      <p class="item-notes">回转寿司连锁店</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-attraction">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
                     <span class="item-time">16:00</span>
-                    <span class="item-type">交通</span>
+                    <span class="item-type">景点</span>
                     <div class="item-body">
-                      <strong>台铁前往花莲</strong>
-                      <span class="item-loc">📍 台北车站</span>
-                      <p class="item-notes">车程约2小时，享受免费吃喝</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="day-item type-hotel">
-                  <div class="item-view">
-                    <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">19:00</span>
-                    <span class="item-type">住宿</span>
-                    <div class="item-body">
-                      <strong>美仑大饭店</strong>
-                      <span class="item-loc">📍 花莲县花莲市</span>
-                      <p class="item-notes">入住酒店，休息调整</p>
+                      <strong>台北101</strong>
+                      <span class="item-loc">📍 台北市信义区</span>
+                      <p class="item-notes">登顶观景台需额外购票</p>
                     </div>
                   </div>
                 </li>
@@ -992,51 +1051,51 @@ input, textarea, select { pointer-events: none !important; }
             </div>
             <ul class="day-items">
               
-                <li class="day-item type-attraction">
+                <li class="day-item type-food">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
                     <span class="item-time">09:00</span>
-                    <span class="item-type">景点</span>
+                    <span class="item-type">餐饮</span>
                     <div class="item-body">
-                      <strong>淡江中学</strong>
-                      <span class="item-loc">📍 新北市淡水区</span>
-                      <p class="item-notes">《不能说的秘密》取景地</p>
+                      <strong>春水堂</strong>
+                      <span class="item-loc">📍 台北市大安区</span>
+                      <p class="item-notes">知名珍珠奶茶店</p>
                     </div>
                   </div>
                 </li>
                 <li class="day-item type-attraction">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">11:00</span>
+                    <span class="item-time">10:00</span>
                     <span class="item-type">景点</span>
                     <div class="item-body">
-                      <strong>真理大学</strong>
-                      <span class="item-loc">📍 新北市淡水区</span>
-                      <p class="item-notes">参观校园，感受学术氛围</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="day-item type-attraction">
-                  <div class="item-view">
-                    <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">14:00</span>
-                    <span class="item-type">景点</span>
-                    <div class="item-body">
-                      <strong>渔人码头</strong>
-                      <span class="item-loc">📍 新北市淡水区</span>
-                      <p class="item-notes">欣赏日落，拍照打卡</p>
+                      <strong>宫原眼科冰激凌</strong>
+                      <span class="item-loc">📍 台北市中山区</span>
+                      <p class="item-notes">老建筑改造的冰激凌店</p>
                     </div>
                   </div>
                 </li>
                 <li class="day-item type-transport">
                   <div class="item-view">
                     <span class="item-drag" style="cursor:default">⋮⋮</span>
-                    <span class="item-time">17:00</span>
+                    <span class="item-time">12:00</span>
                     <span class="item-type">交通</span>
                     <div class="item-body">
-                      <strong>返回台北</strong>
-                      <span class="item-loc">📍 新北市淡水区</span>
-                      <p class="item-notes">乘坐台铁或打车返回台北，预留充足时间</p>
+                      <strong>前往机场</strong>
+                      <span class="item-loc">📍 台北桃园国际机场</span>
+                      <p class="item-notes">建议提前3小时抵达机场</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-hotel">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">15:00</span>
+                    <span class="item-type">住宿</span>
+                    <div class="item-body">
+                      <strong>返程</strong>
+                      <span class="item-loc">📍 香港</span>
+                      <p class="item-notes">搭乘航班返回香港</p>
                     </div>
                   </div>
                 </li>
