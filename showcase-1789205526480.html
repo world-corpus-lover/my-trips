@@ -6,356 +6,1048 @@
 <meta name="theme-color" content="#6366f1">
 <title>台北3日游 · 完整展示</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   background: #f5f7fa;
   color: #1a1a1a;
   line-height: 1.6;
 }
-.wrap { max-width: 880px; margin: 0 auto; padding: 0 0 48px; }
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
 .header {
+  text-align: center;
+  padding: 32px 0 24px;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 720px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #1a1a1a;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #374151;
+}
+
+.field span {
+  font-weight: 500;
+}
+
+.field input,
+.field textarea {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn-primary {
+  padding: 10px 16px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 13px;
+}
+
+.empty {
+  color: #9ca3af;
+  text-align: center;
+  padding: 24px 0;
+}
+
+.trip-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trip-item {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.trip-item strong {
+  font-size: 15px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.trip-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.trip-notes {
+  font-size: 13px;
+  color: #4b5563;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #e5e7eb;
+}
+
+.trip-head {
+  cursor: pointer;
+  position: relative;
+}
+
+.chevron {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.trip-delete {
+  position: absolute;
+  right: 24px;
+  top: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.4;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.trip-delete:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.materials {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mat-add {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.mat-link-form {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.mat-link-form input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.btn-small {
+  padding: 6px 12px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-small:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.btn-small:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.file-btn {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mat-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mat-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.mat-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.mat-thumb {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.mat-icon {
+  font-size: 20px;
+  width: 48px;
+  text-align: center;
+  line-height: 48px;
+  flex-shrink: 0;
+}
+
+.mat-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.mat-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.mat-title {
+  color: #2563eb;
+}
+
+.mat-status {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.btn-tiny {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  color: #4b5563;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.btn-tiny:hover {
+  background: #f3f4f6;
+}
+
+.mat-content {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.mat-content summary {
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.mat-content p {
+  margin-top: 4px;
+  line-height: 1.5;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.mat-actions {
+  margin-top: 6px;
+}
+
+.mat-ai-summary {
+  font-size: 12px;
+  color: #4b5563;
+  background: #f9fafb;
+  padding: 6px;
+  border-radius: 4px;
+  line-height: 1.5;
+}
+
+.gen-section {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed #e5e7eb;
+}
+
+.btn-gen {
+  width: 100%;
+  padding: 10px;
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   color: #fff;
-  padding: 32px 24px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
 }
-.header h1 { font-size: 26px; margin-bottom: 10px; word-break: break-word; }
-.header .meta { font-size: 14px; opacity: 0.95; display: flex; flex-wrap: wrap; gap: 6px 16px; }
-.header .notes {
-  margin-top: 12px; font-size: 13px;
-  background: rgba(255,255,255,0.15);
-  padding: 10px 12px; border-radius: 8px;
-  white-space: pre-wrap; word-break: break-word;
+
+.btn-gen:hover:not(:disabled) {
+  opacity: 0.9;
 }
-.section {
-  margin: 24px 16px 0;
+
+.btn-gen:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.gen-error {
+  margin-top: 8px;
+  font-size: 12px;
+  background: #fef2f2;
+  padding: 8px;
+  border-radius: 6px;
+  line-height: 1.5;
+}
+
+.timeline {
+  margin-top: 16px;
+}
+
+.timeline-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.timeline-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.timeline-head .timeline-title {
+  margin-bottom: 0;
+}
+
+.btn-mobile {
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-mobile:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btn-mobile:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mobile-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+
+.mobile-modal-card {
   background: #fff;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-.section h2 {
-  font-size: 16px; font-weight: 700; margin-bottom: 14px;
-  color: #1a1a1a; display: flex; align-items: center; gap: 8px;
-}
-.section h2 .count {
-  font-size: 12px; color: #9ca3af; font-weight: 400; margin-left: auto;
-}
-.empty { color: #9ca3af; text-align: center; padding: 24px 0; font-size: 14px; }
-
-/* 素材区 */
-.mat-grid {
-  list-style: none; display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
-}
-.mat-card {
-  border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;
-  background: #fff; display: flex; flex-direction: column;
-}
-.mat-image .mat-img-wrap { aspect-ratio: 4/3; background: #f3f4f6; }
-.mat-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.mat-link { padding: 12px; }
-.mat-head { display: flex; align-items: center; gap: 8px; }
-.mat-type {
-  font-size: 11px; color: #6b7280; background: #f3f4f6;
-  padding: 2px 8px; border-radius: 10px; flex-shrink: 0;
-}
-.mat-title {
-  font-size: 13px; color: #2563eb; font-weight: 500;
-  text-decoration: none; word-break: break-all; flex: 1; min-width: 0;
-}
-.mat-title:hover { text-decoration: underline; }
-.mat-content {
-  font-size: 12px; color: #4b5563; margin-top: 8px;
-  line-height: 1.6; max-height: 100px; overflow: hidden;
-}
-.mat-body { padding: 8px 10px; }
-.mat-ai {
-  font-size: 12px; color: #4b5563; background: #f9fafb;
-  padding: 6px 8px; border-radius: 4px; line-height: 1.5;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* 时间线 */
-.day {
-  background: #f9fafb; border-radius: 10px;
-  margin-bottom: 10px; overflow: hidden;
+.mobile-modal-card strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #10b981;
+}
+
+.mobile-url-line {
+  font-size: 13px;
+  color: #2563eb;
+  word-break: break-all;
+  background: #f3f4f6;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.mobile-modal-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mobile-tip {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.day-block {
+  margin-bottom: 16px;
   border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
 }
-.day-summary {
-  display: flex; align-items: center; gap: 10px;
-  padding: 12px 16px; font-size: 15px; font-weight: 600;
-  cursor: pointer; list-style: none; user-select: none;
+
+.day-header {
+  background: #f3f4f6;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 13px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.day-date {
+  color: #6b7280;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.day-items {
+  list-style: none;
+  padding: 8px;
+}
+
+.day-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  border-left: 3px solid #d1d5db;
+  margin-bottom: 4px;
   background: #fff;
 }
-.day-summary::-webkit-details-marker { display: none; }
-.day-summary::after {
-  content: '▸'; margin-left: auto; color: #9ca3af;
-  transition: transform 0.2s; font-size: 14px;
+
+.day-item.type-attraction { border-left-color: #10b981; }
+.day-item.type-food { border-left-color: #f59e0b; }
+.day-item.type-transport { border-left-color: #3b82f6; }
+.day-item.type-hotel { border-left-color: #8b5cf6; }
+.day-item.type-free { border-left-color: #9ca3af; }
+
+.item-time {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  font-variant-numeric: tabular-nums;
+  min-width: 48px;
+  flex-shrink: 0;
 }
-.day[open] .day-summary::after { transform: rotate(90deg); }
-.day-num { color: #6366f1; }
-.day-date { color: #6b7280; font-weight: 400; font-size: 14px; }
-.day-count { color: #9ca3af; font-weight: 400; font-size: 12px; }
-.items { list-style: none; padding: 8px 12px 12px; }
-.item {
-  padding: 12px; border-radius: 8px;
-  border-left: 4px solid #d1d5db; margin-bottom: 8px;
-  background: #fff;
-}
-.item.type-attraction { border-left-color: #10b981; }
-.item.type-food { border-left-color: #f59e0b; }
-.item.type-transport { border-left-color: #3b82f6; }
-.item.type-hotel { border-left-color: #8b5cf6; }
-.item.type-free { border-left-color: #9ca3af; }
-.item-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-.item-time { font-size: 14px; font-weight: 600; color: #374151; font-variant-numeric: tabular-nums; }
-.item-icon { font-size: 16px; }
+
 .item-type {
-  font-size: 11px; color: #6b7280; background: #f3f4f6;
-  padding: 2px 8px; border-radius: 10px; border: 1px solid #e5e7eb;
+  font-size: 11px;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 1px 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  min-width: 40px;
+  text-align: center;
 }
-.item-title { font-size: 15px; display: block; margin: 2px 0; word-break: break-word; }
-.item-loc { font-size: 13px; color: #6b7280; margin-bottom: 2px; }
-.item-notes { font-size: 13px; color: #4b5563; margin-top: 4px; white-space: pre-wrap; word-break: break-word; }
-.footer { text-align: center; color: #9ca3af; font-size: 11px; padding: 24px 16px; }
+
+.item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-body strong {
+  font-size: 13px;
+  display: block;
+}
+
+.item-loc {
+  font-size: 12px;
+  color: #6b7280;
+  display: block;
+  margin-top: 2px;
+}
+
+.item-notes {
+  font-size: 12px;
+  color: #4b5563;
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.day-item-empty {
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 8px;
+}
+
+.timeline-hint {
+  font-size: 11px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.day-item {
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.day-item:hover {
+  background: #f9fafb;
+}
+
+.day-item.editing {
+  background: #fffbeb;
+  border-left-width: 4px;
+  cursor: default;
+}
+
+.day-item.dragging {
+  opacity: 0.4;
+}
+
+.item-view {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.item-drag {
+  cursor: grab;
+  color: #d1d5db;
+  font-size: 14px;
+  user-select: none;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+.item-drag:active {
+  cursor: grabbing;
+}
+
+.item-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.item-edit-row {
+  display: flex;
+  gap: 6px;
+}
+
+.item-edit-row select,
+.item-edit-row input {
+  padding: 4px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.item-edit-title,
+.item-edit-loc,
+.item-edit-notes {
+  padding: 4px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: inherit;
+  width: 100%;
+}
+
+.item-edit-notes {
+  resize: vertical;
+  min-height: 36px;
+}
+
+.item-edit-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-danger {
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.btn-danger:hover {
+  background: #fef2f2;
+}
+
+.btn-add-item {
+  display: block;
+  width: 100%;
+  margin: 6px 8px 8px;
+  padding: 6px;
+  background: transparent;
+  border: 1px dashed #d1d5db;
+  border-radius: 6px;
+  color: #6b7280;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-add-item:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+
+/* 展示版调整:全部禁用交互 */
+.trip-head { cursor: default !important; }
+.day-item { cursor: default !important; }
+.btn-primary, .btn-small, .btn-tiny, .btn-gen, .btn-mobile, .file-btn, .btn-add-item, .btn-danger {
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+}
+input, textarea, select { pointer-events: none !important; }
+
+/* 展示版:行程卡片默认展开,chevron 显示 ▾ */
+.trip-item .materials { display: block; }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="header">
-    <h1>台北3日游</h1>
-    <div class="meta">
-      <span>📍 台北</span>
-      <span>📅 2026-09-10 ~ 2026-09-13</span>
-      <span>👤 10人</span>
-    </div>
-    
-  </div>
+<div class="app">
+  <header class="header">
+    <h1>说走就走</h1>
+    <p class="subtitle">个人旅行规划工具</p>
+  </header>
 
-  <section class="section">
-    <h2>📎 素材 <span class="count">0 个</span></h2>
-    <p class="empty">还没有素材</p>
-  </section>
+  <main class="main">
+    <section class="card">
+      <h2>创建新行程</h2>
+      <form class="form" onsubmit="return false">
+        <label class="field">
+          <span>行程名称</span>
+          <input value="" placeholder="例如:东京5日游" readonly />
+        </label>
+        <label class="field">
+          <span>目的地</span>
+          <input value="" placeholder="例如:东京" readonly />
+        </label>
+        <div class="row">
+          <label class="field">
+            <span>出发日期</span>
+            <input type="date" value="" readonly />
+          </label>
+          <label class="field">
+            <span>结束日期</span>
+            <input type="date" value="" readonly />
+          </label>
+        </div>
+        <label class="field">
+          <span>出行人数</span>
+          <input type="number" min="1" value="1" readonly />
+        </label>
+        <label class="field">
+          <span>备注</span>
+          <textarea placeholder="预算、偏好、特殊需求..." rows="3" readonly></textarea>
+        </label>
+        <button type="submit" class="btn-primary" disabled>创建行程</button>
+      </form>
+    </section>
 
-  <section class="section">
-    <h2>📅 时间线 <span class="count">4 天</span></h2>
-    
-        <details class="day" open>
-          <summary class="day-summary">
-            <span class="day-num">Day 1</span>
-            <span class="day-date">2026-09-10</span>
-            <span class="day-count">5 项</span>
-          </summary>
-          <ul class="items">
-          <li class="item type-attraction">
-            <div class="item-head">
-              <span class="item-time">09:00</span>
-              <span class="item-icon">🎟️</span>
-              <span class="item-type">景点</span>
+    <section class="card">
+      <h2>我的行程 (1)</h2>
+      <ul class="trip-list">
+    <li class="trip-item">
+      <div class="trip-head" style="cursor:default">
+        <strong>台北3日游</strong>
+        <div class="trip-meta">
+          <span>📍 台北</span>
+          <span>📅 2026-09-10 ~ 2026-09-13</span>
+          <span>👤 10人</span>
+          <span>📦 素材 0</span>
+        </div>
+        
+        <span class="chevron">▾</span>
+      </div>
+      <div class="materials">
+        <p className="empty">还没有素材</p>
+        <div class="timeline">
+        <div class="timeline-head">
+          <h3 class="timeline-title">行程时间线 <span class="timeline-hint">(展示版,只读)</span></h3>
+        </div>
+        
+          <div class="day-block">
+            <div class="day-header">
+              Day 1
+              <span class="day-date">2026-09-10</span>
             </div>
-            <strong class="item-title">西门町</strong>
-            <div class="item-loc">📍 台北市万华区</div>
-            <p class="item-notes">体验当地文化，购物打卡</p>
-          </li>
-          <li class="item type-food">
-            <div class="item-head">
-              <span class="item-time">12:00</span>
-              <span class="item-icon">🍽️</span>
-              <span class="item-type">餐饮</span>
+            <ul class="day-items">
+              
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">09:00</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>西门町</strong>
+                      <span class="item-loc">📍 台北市万华区</span>
+                      <p class="item-notes">体验当地文化，购物打卡</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-food">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">12:00</span>
+                    <span class="item-type">餐饮</span>
+                    <div class="item-body">
+                      <strong>宁夏夜市</strong>
+                      <span class="item-loc">📍 台北市大同区</span>
+                      <p class="item-notes">品尝当地美食，建议预留2小时</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">14:30</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>台北101</strong>
+                      <span class="item-loc">📍 台北市信义区</span>
+                      <p class="item-notes">地标建筑打卡，可提前购票节省排队时间</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-free">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">17:00</span>
+                    <span class="item-type">购物</span>
+                    <div class="item-body">
+                      <strong>三统汉果子信义区分店</strong>
+                      <span class="item-loc">📍 台北市信义区</span>
+                      <p class="item-notes">购买伴手礼，推荐流心酥和凤梨酥</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-hotel">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">19:00</span>
+                    <span class="item-type">住宿</span>
+                    <div class="item-body">
+                      <strong>士林万丽酒店</strong>
+                      <span class="item-loc">📍 台北市士林区</span>
+                      <p class="item-notes">入住酒店，休息调整</p>
+                    </div>
+                  </div>
+                </li>
+              
+            </ul>
+          </div>
+          <div class="day-block">
+            <div class="day-header">
+              Day 2
+              <span class="day-date">2026-09-11</span>
             </div>
-            <strong class="item-title">宁夏夜市</strong>
-            <div class="item-loc">📍 台北市大同区</div>
-            <p class="item-notes">品尝当地美食，建议预留2小时</p>
-          </li>
-          <li class="item type-attraction">
-            <div class="item-head">
-              <span class="item-time">14:30</span>
-              <span class="item-icon">🎟️</span>
-              <span class="item-type">景点</span>
+            <ul class="day-items">
+              
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">09:00</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>台北故宫博物院</strong>
+                      <span class="item-loc">📍 台北市士林区</span>
+                      <p class="item-notes">必去景点，建议预留3-4小时参观</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">13:00</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>袖珍博物馆</strong>
+                      <span class="item-loc">📍 台北市中山区</span>
+                      <p class="item-notes">小而精致，适合模型和玩偶爱好者</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">15:00</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>中山地下街</strong>
+                      <span class="item-loc">📍 台北市中山区</span>
+                      <p class="item-notes">购物探索的好去处</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-food">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">18:00</span>
+                    <span class="item-type">餐饮</span>
+                    <div class="item-body">
+                      <strong>赤峰街</strong>
+                      <span class="item-loc">📍 台北市中山区</span>
+                      <p class="item-notes">扫街探店，品尝当地特色美食</p>
+                    </div>
+                  </div>
+                </li>
+              
+            </ul>
+          </div>
+          <div class="day-block">
+            <div class="day-header">
+              Day 3
+              <span class="day-date">2026-09-12</span>
             </div>
-            <strong class="item-title">台北101</strong>
-            <div class="item-loc">📍 台北市信义区</div>
-            <p class="item-notes">地标建筑打卡，可提前购票节省排队时间</p>
-          </li>
-          <li class="item type-free">
-            <div class="item-head">
-              <span class="item-time">17:00</span>
-              <span class="item-icon">🎈</span>
-              <span class="item-type">购物</span>
+            <ul class="day-items">
+              
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">09:00</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>三创生活园区</strong>
+                      <span class="item-loc">📍 台北市松山区</span>
+                      <p class="item-notes">二次元天堂，适合购物和展览</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">12:00</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>华山文创园</strong>
+                      <span class="item-loc">📍 台北市中正区</span>
+                      <p class="item-notes">展览多且有趣，知名IP和文创聚集地</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-transport">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">15:00</span>
+                    <span class="item-type">交通</span>
+                    <div class="item-body">
+                      <strong>台铁e订通购票</strong>
+                      <span class="item-loc">📍 台北车站</span>
+                      <p class="item-notes">购买台铁票，推荐自强号腾云座舱</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-transport">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">16:00</span>
+                    <span class="item-type">交通</span>
+                    <div class="item-body">
+                      <strong>台铁前往花莲</strong>
+                      <span class="item-loc">📍 台北车站</span>
+                      <p class="item-notes">车程约2小时，享受免费吃喝</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-hotel">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">19:00</span>
+                    <span class="item-type">住宿</span>
+                    <div class="item-body">
+                      <strong>美仑大饭店</strong>
+                      <span class="item-loc">📍 花莲县花莲市</span>
+                      <p class="item-notes">入住酒店，休息调整</p>
+                    </div>
+                  </div>
+                </li>
+              
+            </ul>
+          </div>
+          <div class="day-block">
+            <div class="day-header">
+              Day 4
+              <span class="day-date">2026-09-13</span>
             </div>
-            <strong class="item-title">三统汉果子信义区分店</strong>
-            <div class="item-loc">📍 台北市信义区</div>
-            <p class="item-notes">购买伴手礼，推荐流心酥和凤梨酥</p>
-          </li>
-          <li class="item type-hotel">
-            <div class="item-head">
-              <span class="item-time">19:00</span>
-              <span class="item-icon">🏨</span>
-              <span class="item-type">住宿</span>
-            </div>
-            <strong class="item-title">士林万丽酒店</strong>
-            <div class="item-loc">📍 台北市士林区</div>
-            <p class="item-notes">入住酒店，休息调整</p>
-          </li></ul>
-        </details>
-        <details class="day" >
-          <summary class="day-summary">
-            <span class="day-num">Day 2</span>
-            <span class="day-date">2026-09-11</span>
-            <span class="day-count">4 项</span>
-          </summary>
-          <ul class="items">
-          <li class="item type-attraction">
-            <div class="item-head">
-              <span class="item-time">09:00</span>
-              <span class="item-icon">🎟️</span>
-              <span class="item-type">景点</span>
-            </div>
-            <strong class="item-title">台北故宫博物院</strong>
-            <div class="item-loc">📍 台北市士林区</div>
-            <p class="item-notes">必去景点，建议预留3-4小时参观</p>
-          </li>
-          <li class="item type-attraction">
-            <div class="item-head">
-              <span class="item-time">13:00</span>
-              <span class="item-icon">🎟️</span>
-              <span class="item-type">景点</span>
-            </div>
-            <strong class="item-title">袖珍博物馆</strong>
-            <div class="item-loc">📍 台北市中山区</div>
-            <p class="item-notes">小而精致，适合模型和玩偶爱好者</p>
-          </li>
-          <li class="item type-attraction">
-            <div class="item-head">
-              <span class="item-time">15:00</span>
-              <span class="item-icon">🎟️</span>
-              <span class="item-type">景点</span>
-            </div>
-            <strong class="item-title">中山地下街</strong>
-            <div class="item-loc">📍 台北市中山区</div>
-            <p class="item-notes">购物探索的好去处</p>
-          </li>
-          <li class="item type-food">
-            <div class="item-head">
-              <span class="item-time">18:00</span>
-              <span class="item-icon">🍽️</span>
-              <span class="item-type">餐饮</span>
-            </div>
-            <strong class="item-title">赤峰街</strong>
-            <div class="item-loc">📍 台北市中山区</div>
-            <p class="item-notes">扫街探店，品尝当地特色美食</p>
-          </li></ul>
-        </details>
-        <details class="day" >
-          <summary class="day-summary">
-            <span class="day-num">Day 3</span>
-            <span class="day-date">2026-09-12</span>
-            <span class="day-count">5 项</span>
-          </summary>
-          <ul class="items">
-          <li class="item type-attraction">
-            <div class="item-head">
-              <span class="item-time">09:00</span>
-              <span class="item-icon">🎟️</span>
-              <span class="item-type">景点</span>
-            </div>
-            <strong class="item-title">三创生活园区</strong>
-            <div class="item-loc">📍 台北市松山区</div>
-            <p class="item-notes">二次元天堂，适合购物和展览</p>
-          </li>
-          <li class="item type-attraction">
-            <div class="item-head">
-              <span class="item-time">12:00</span>
-              <span class="item-icon">🎟️</span>
-              <span class="item-type">景点</span>
-            </div>
-            <strong class="item-title">华山文创园</strong>
-            <div class="item-loc">📍 台北市中正区</div>
-            <p class="item-notes">展览多且有趣，知名IP和文创聚集地</p>
-          </li>
-          <li class="item type-transport">
-            <div class="item-head">
-              <span class="item-time">15:00</span>
-              <span class="item-icon">🚆</span>
-              <span class="item-type">交通</span>
-            </div>
-            <strong class="item-title">台铁e订通购票</strong>
-            <div class="item-loc">📍 台北车站</div>
-            <p class="item-notes">购买台铁票，推荐自强号腾云座舱</p>
-          </li>
-          <li class="item type-transport">
-            <div class="item-head">
-              <span class="item-time">16:00</span>
-              <span class="item-icon">🚆</span>
-              <span class="item-type">交通</span>
-            </div>
-            <strong class="item-title">台铁前往花莲</strong>
-            <div class="item-loc">📍 台北车站</div>
-            <p class="item-notes">车程约2小时，享受免费吃喝</p>
-          </li>
-          <li class="item type-hotel">
-            <div class="item-head">
-              <span class="item-time">19:00</span>
-              <span class="item-icon">🏨</span>
-              <span class="item-type">住宿</span>
-            </div>
-            <strong class="item-title">美仑大饭店</strong>
-            <div class="item-loc">📍 花莲县花莲市</div>
-            <p class="item-notes">入住酒店，休息调整</p>
-          </li></ul>
-        </details>
-        <details class="day" >
-          <summary class="day-summary">
-            <span class="day-num">Day 4</span>
-            <span class="day-date">2026-09-13</span>
-            <span class="day-count">4 项</span>
-          </summary>
-          <ul class="items">
-          <li class="item type-attraction">
-            <div class="item-head">
-              <span class="item-time">09:00</span>
-              <span class="item-icon">🎟️</span>
-              <span class="item-type">景点</span>
-            </div>
-            <strong class="item-title">淡江中学</strong>
-            <div class="item-loc">📍 新北市淡水区</div>
-            <p class="item-notes">《不能说的秘密》取景地</p>
-          </li>
-          <li class="item type-attraction">
-            <div class="item-head">
-              <span class="item-time">11:00</span>
-              <span class="item-icon">🎟️</span>
-              <span class="item-type">景点</span>
-            </div>
-            <strong class="item-title">真理大学</strong>
-            <div class="item-loc">📍 新北市淡水区</div>
-            <p class="item-notes">参观校园，感受学术氛围</p>
-          </li>
-          <li class="item type-attraction">
-            <div class="item-head">
-              <span class="item-time">14:00</span>
-              <span class="item-icon">🎟️</span>
-              <span class="item-type">景点</span>
-            </div>
-            <strong class="item-title">渔人码头</strong>
-            <div class="item-loc">📍 新北市淡水区</div>
-            <p class="item-notes">欣赏日落，拍照打卡</p>
-          </li>
-          <li class="item type-transport">
-            <div class="item-head">
-              <span class="item-time">17:00</span>
-              <span class="item-icon">🚆</span>
-              <span class="item-type">交通</span>
-            </div>
-            <strong class="item-title">返回台北</strong>
-            <div class="item-loc">📍 新北市淡水区</div>
-            <p class="item-notes">乘坐台铁或打车返回台北，预留充足时间</p>
-          </li></ul>
-        </details>
-  </section>
-
-  <div class="footer">由「说走就走」生成 · 2026/9/12 17:49:38</div>
+            <ul class="day-items">
+              
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">09:00</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>淡江中学</strong>
+                      <span class="item-loc">📍 新北市淡水区</span>
+                      <p class="item-notes">《不能说的秘密》取景地</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">11:00</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>真理大学</strong>
+                      <span class="item-loc">📍 新北市淡水区</span>
+                      <p class="item-notes">参观校园，感受学术氛围</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-attraction">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">14:00</span>
+                    <span class="item-type">景点</span>
+                    <div class="item-body">
+                      <strong>渔人码头</strong>
+                      <span class="item-loc">📍 新北市淡水区</span>
+                      <p class="item-notes">欣赏日落，拍照打卡</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="day-item type-transport">
+                  <div class="item-view">
+                    <span class="item-drag" style="cursor:default">⋮⋮</span>
+                    <span class="item-time">17:00</span>
+                    <span class="item-type">交通</span>
+                    <div class="item-body">
+                      <strong>返回台北</strong>
+                      <span class="item-loc">📍 新北市淡水区</span>
+                      <p class="item-notes">乘坐台铁或打车返回台北，预留充足时间</p>
+                    </div>
+                  </div>
+                </li>
+              
+            </ul>
+          </div>
+      </div>
+      </div>
+    </li></ul>
+    </section>
+  </main>
 </div>
 </body>
 </html>
